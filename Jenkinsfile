@@ -7,7 +7,7 @@ pipeline {
 
             steps {
                 script {
-                    echo "$BRANCH_NAME"
+                    echo "${BRANCH_NAME}"
                     echo "Hello! this is Main branch..."
                 }
             }
