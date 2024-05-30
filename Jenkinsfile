@@ -16,7 +16,7 @@ pipeline {
                 }
             }
             steps {
-                echo ${env.BRANCH_NAME}
+
                 echo "This stage runs only for the 'main' or 'develop' branch."
             }
         }
