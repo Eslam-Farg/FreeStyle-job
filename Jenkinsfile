@@ -3,23 +3,9 @@
 pipeline {
     agent any
 
-        environment {
-        BRANCH = "${env.BRANCH_NAME}"
-    }
 
-    
     stages {
-        stage('Conditional Stage') {
-            when {
-                expression {
-                    BRANCH != 'main'
-                }
-            }
-            steps {
 
-                echo "This stage runs only for the 'main' or 'develop' branch."
-            }
-        }
         stage('build') {
             steps {
                 script {
