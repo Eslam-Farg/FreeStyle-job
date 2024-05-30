@@ -4,10 +4,12 @@ pipeline {
     agent any
     stages {
         stage('init') {
-
+           when {
+               BRANCH_NAME != 'main'
+           }
             steps {
                 script {
-                    echo "${BRANCH_NAME}"
+                    
                     echo "Hello! this is Main branch..."
                 }
             }
