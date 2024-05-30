@@ -5,7 +5,9 @@ pipeline {
     stages {
         stage('init') {
            when {
+               expression{
                BRANCH_NAME != 'main'
+           }
            }
             steps {
                 script {
