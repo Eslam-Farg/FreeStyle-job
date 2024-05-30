@@ -1,5 +1,7 @@
 #!/usr/bin/env groovy
 
+def gv
+
 pipeline {
     agent any
     tools {
@@ -15,6 +17,14 @@ pipeline {
 
     stages {
 
+        stage('init') {
+            steps {
+                script {
+                    gv = load 'script.groovy'
+                }
+            }
+        }
+
         stage('Test') {
             when {
                 expression {
@@ -23,7 +33,7 @@ pipeline {
             }
             steps {
                 script {
-                    echo "Testing app............................................"
+                    gv.TestApp()
                     
                 }
             }
@@ -32,7 +42,7 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    echo "Building the application..."
+                    gv.buildApp()
                     sh 'mvn package'
                 }
             }
@@ -41,7 +51,7 @@ pipeline {
         stage('deploy') {
             steps {
                 script {
-                    echo "Deploying the application..."
+                    gv.deployApp()
                     sh 'docker build .'
                 }
             }
