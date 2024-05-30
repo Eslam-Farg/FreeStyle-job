@@ -2,12 +2,21 @@
 
 pipeline {
     agent any
+
+        environment {
+        BRANCH = "${env.BRANCH_NAME}"
+    }
+
+    
     stages {
-      steps {
-                script {
-                    
-                    echo "Hello! this is Main branch..."
+        stage('Conditional Stage') {
+            when {
+                expression {
+                    env.BRANCH == 'main'
                 }
+            }
+            steps {
+                echo "This stage runs only for the 'main' or 'develop' branch."
             }
         }
         stage('build') {
