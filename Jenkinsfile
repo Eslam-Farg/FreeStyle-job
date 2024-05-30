@@ -4,11 +4,7 @@ pipeline {
     agent any
     stages {
         stage('init') {
-            when {
-                expression {
-                    BRANCH_NAME == 'main'
-                }
-            }
+
             steps {
                 script {
                     echo "Hello! this is Main branch..."
