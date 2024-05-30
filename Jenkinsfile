@@ -16,6 +16,7 @@ pipeline {
                 }
             }
             steps {
+                echo $BRANCH
                 echo "This stage runs only for the 'main' or 'develop' branch."
             }
         }
