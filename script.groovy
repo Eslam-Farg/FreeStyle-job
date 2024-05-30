@@ -10,3 +10,6 @@ define TestApp(){
 define DeployApp(){
   echo 'Deploying App................................'
 }
+
+
+return this
