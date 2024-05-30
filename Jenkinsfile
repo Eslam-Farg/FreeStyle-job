@@ -2,6 +2,9 @@
 
 pipeline {
     agent any
+    tools {
+        maven 'maven'
+    }
 
 
     stages {
@@ -10,6 +13,7 @@ pipeline {
             steps {
                 script {
                     echo "Building the application..."
+                    sh 'mvn package'
                 }
             }
         }
