@@ -21,6 +21,7 @@ pipeline {
             steps {
                 script {
                     echo "Testing the application..."
+                    sh 'mvn Test'
                 }
             }
         }
@@ -28,6 +29,7 @@ pipeline {
             steps {
                 script {
                     echo "Deploying the application..."
+                    sh 'docker build .'
                 }
             }
         }
