@@ -1,5 +1,5 @@
 
-define buildApp(){
+define BuildApp(){
   echo 'Building App................................'
 }
 
