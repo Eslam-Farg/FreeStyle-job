@@ -12,7 +12,7 @@ pipeline {
         stage('Conditional Stage') {
             when {
                 expression {
-                    BRANCH == 'main'
+                    BRANCH != 'main'
                 }
             }
             steps {
