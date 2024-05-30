@@ -42,7 +42,7 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    gv.buildApp()
+                    gv.BuildApp()
                     sh 'mvn package'
                 }
             }
@@ -51,7 +51,7 @@ pipeline {
         stage('deploy') {
             steps {
                 script {
-                    gv.deployApp()
+                    gv.DeployApp()
                     sh 'docker build .'
                 }
             }
