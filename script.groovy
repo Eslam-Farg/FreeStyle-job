@@ -1,13 +1,13 @@
 
-define BuildApp(){
+def BuildApp(){
   echo 'Building App................................'
 }
 
-define TestApp(){
+def TestApp(){
   echo 'Testing App................................'
 }
 
-define DeployApp(){
+def DeployApp(){
   echo 'Deploying App................................'
 }
 
