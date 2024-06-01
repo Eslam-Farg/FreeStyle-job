@@ -69,7 +69,7 @@ pipeline {
                     echo "deployine to ${ENV}"
 
                     withCredentials([usernamePassword(credentialsId: 'eslam1', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                    sh "echo $PASS | docker login -u $USER --pasword-stdin"
+                    sh "echo $PASS | docker login -u $USER --password-stdin"
                     sh 'docker push eslam1/jenkins-repo:3.0'
                     }
                 }
