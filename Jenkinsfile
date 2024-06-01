@@ -25,9 +25,8 @@ pipeline {
             steps {
                 script {
                     gv = load "script.groovy"
-                    echo "Username: $CRED_USR"
-                    echo "Password: $CRED_PSW"
-
+                    echo "Username & pass: $CRED"
+                    
                 }
             }
         }
