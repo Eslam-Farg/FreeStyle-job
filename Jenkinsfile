@@ -49,7 +49,7 @@ pipeline {
             steps {
                 script {
                     gv.BuildApp()
-                    sh 'mvn package'
+                    sh 'mvn package clean deploy'
                 }
             }
         }
@@ -65,6 +65,7 @@ pipeline {
             steps {
                 script {
                     gv.DeployApp()
+                    sh 'mvn install'
                     sh 'docker build -t eslam1/jenkins-repo:3.0 .'
                     echo "deployine to ${ENV}"
 
