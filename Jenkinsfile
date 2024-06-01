@@ -8,15 +8,15 @@ pipeline {
         maven 'maven'
     }
 
-  //  environment {
-   //     CRED = credentials('eslam1')
- //   }
+      environment {
+         CRED = credentials('eslam1')
+      }
 
-//    parameters {
+   parameters {
 
-//        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
-//        booleanParam(name: 'executeTests', defaultValue: true, description: '')
-//    }
+       choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
+        booleanParam(name: 'executeTests', defaultValue: true, description: '')
+    }
 
 
     stages {
@@ -25,8 +25,8 @@ pipeline {
             steps {
                 script {
                     gv = load "script.groovy"
-                 //   echo "Username & pass: $CRED"
-                    
+                   echo "Username: $CRED_USR"
+
                 }
             }
         }
@@ -65,8 +65,12 @@ pipeline {
             steps {
                 script {
                     gv.DeployApp()
-                    sh 'docker build .'
+                    sh 'docker build -t eslam1/jenkins-repo:3.0 .'
                     echo "deployine to ${ENV}"
+
+                    withcredentials([usernamePassword(credentialsId: 'eslam1', usernameVariable: 'USER', passwordVariable: 'PASS')])
+                    sh "echo $PASS | docker login -u $USER --pasword-stdin"
+                    sh 'docker push eslam1/jenkins-repo:3.0'
                 }
             }
         }
